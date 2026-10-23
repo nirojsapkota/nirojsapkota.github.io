@@ -1,32 +1,95 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --bg: #ffffff;
-  --fg: #1f2328;
-  --muted: #59636e;
-  --link: #0969da;
+  --fg: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --card: #f9fafb;
+  --link: #2563eb;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0d1117;
-    --fg: #e6edf3;
-    --muted: #9198a1;
-    --link: #4493f8;
-  }
-}
+* { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 main {
-  max-width: 720px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 32px 16px 64px;
+  padding: 64px 16px 48px;
 }
-a { color: var(--link); }
-h1 { margin-bottom: 0; }
-h2 { margin-top: 2em; }
-.muted, .apps span { color: var(--muted); }
-.apps li { margin-bottom: 0.5em; }
-.apps span { display: block; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+h2 { margin: 40px 0 8px; font-size: 20px; }
+h2.label {
+  margin: 48px 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.muted, .lead { color: var(--muted); }
+.lead { margin: 8px 0 0; font-size: 18px; }
+code {
+  font-size: 0.9em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--card);
+}
+
+/* Game list */
+.apps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.apps a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--fg);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.apps a:hover {
+  text-decoration: none;
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06);
+}
+.badge {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #fff;
+}
+.apps strong { display: block; font-weight: 600; }
+.apps small { color: var(--muted); font-size: 14px; }
+.apps .arrow { margin-left: auto; color: var(--muted); }
+
+footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: 14px;
+  color: var(--muted);
+}
